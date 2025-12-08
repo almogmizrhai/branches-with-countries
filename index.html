@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/countries.css">
+        
+        <title>countries</title>
+    </head>
+    <body>
+        <h1>Countries</h1>
+
+        <section class="search-country">
+            <input type="text" class="country-input" id="country-input" placeholder="Enter country name...">
+            <button class="btn search-button" onclick="searchCountry()"> Search </button>
+        </section>
+
+        <img src="imgs/loader.svg" alt="" class="loader hide">
+        
+        <section class="result hide">
+            <pre class="result-output"></pre>
+        </section>
+
+        <script src="lib/axios.js"></script>
+        
+        <script src="js/services/promises.service.js"></script>
+        <script src="js/services/storage.service.js"></script>
+        <script src="js/services/countries.service.js"></script>
+
+        <script src="js/country.controller.js"></script>
+    </body>
+</html>
