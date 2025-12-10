@@ -61,6 +61,7 @@ function renderInfo(countryName, countryData) {
     if (!countryData) return
 
     const elResultInfo = document.querySelector('.result-info')
+    const neighbors = onSetNeighbors(countryData.borders)
 
     var strHTML = `<h2 class="country-name">Country Name: ${countryName}</h2>
     <h3>Flag:</h3>
@@ -73,9 +74,32 @@ function renderInfo(countryName, countryData) {
     <h3>Country Population:</h3>
     <p class="country-population"> ${countryData.population}</p>
     <h3>Country Area:</h3>
-    <p class="country-area"> ${countryData.area}</p>`
+    <p class="country-area"> ${countryData.area}</p>
+    <h3>Country Neighbors:</h3>
+    <p class="country-neighbors">${neighbors}</p>`
 
     elResultInfo.innerHTML = strHTML
+}
+
+function onSetNeighbors(borders){
+    if(!borders || borders.length === 0){
+        return 'No neighboring countries'
+    }
+    return borders.map(code => `
+        <a href="#" data-code="${code}" onclick="onNeighborClick(event,'${code}')">${code}</a>
+    `).join(', ')
+}
+
+function onNeighborClick(event, code){
+    event.preventDefault()
+    getCountryByCode(code)
+    .then((data) => {
+        const countryData = data[0]
+        renderInfo(countryData.name.common, countryData)
+    })
+    .catch((err) => {
+        console.error('Error fetching neighbor country data:', err)
+    })
 }
 
 function onClearCache(){
