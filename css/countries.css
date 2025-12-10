@@ -32,13 +32,18 @@ body{
     color: #3d676f;
     padding: 15px;
     border-radius: 8px;
-    max-height: 400px;
+    min-width: 350px;
     overflow-y: auto;
 
     .country-flag{
         width: 150px;
         height: auto;
         border-radius: 5px;
+    }
+
+    .country-neighbors a{
+        text-decoration: none;
+        color: inherit;
     }
 }
 
