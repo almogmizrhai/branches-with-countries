@@ -61,8 +61,10 @@ function renderInfo(countryName, countryData) {
     var strHTML = `<h2 class="country-name">Country Name: ${countryName}</h2>
     <h3>Flag:</h3>
     <img src="${countryData.flags.png}" alt="flag of ${countryName}" class="country-flag">
-    <p class="country-population">Country Population: ${countryData.population}</p>
-    <p class="country-area">Country Area: ${countryData.area}</p>`
+    <h3>Country Population:</h3>
+    <p class="country-population"> ${countryData.population}</p>
+    <h3>Country Area:</h3>
+    <p class="country-area"> ${countryData.area}</p>`
 
     elResultInfo.innerHTML = strHTML
 }

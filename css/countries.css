@@ -20,25 +20,24 @@ body{
     transition: background-color 0.2s ease;
     background-color: #3d676f;
 }
-
-.result-output {
-    text-align: left;
-    background-color: #ddebe6;
-    color: #3d676f;
-    padding: 15px;
-    border-radius: 8px;
-    max-height: 400px;
-    overflow-y: auto;
+.btn:hover {
+    background-color: #2c4a50;
 }
 
 .result-info{
-    text-align: left;
+    text-align: center;
     background-color: #ddebe6;
     color: #3d676f;
     padding: 15px;
     border-radius: 8px;
     max-height: 400px;
     overflow-y: auto;
+
+    .country-flag{
+        width: 150px;
+        height: auto;
+        border-radius: 5px;
+    }
 }
 
 .hide {
