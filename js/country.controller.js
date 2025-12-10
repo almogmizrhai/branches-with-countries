@@ -65,6 +65,11 @@ function renderInfo(countryName, countryData) {
     var strHTML = `<h2 class="country-name">Country Name: ${countryName}</h2>
     <h3>Flag:</h3>
     <img src="${countryData.flags.png}" alt="flag of ${countryName}" class="country-flag">
+    <h3>Link To Country Map:</h3>
+    <a 
+    href="${countryData.maps.googleMaps}" target="_blank">
+    <img border="0" alt="View Map" src="imgs/map-icon.png" width="100" height="100"> 
+    </a>
     <h3>Country Population:</h3>
     <p class="country-population"> ${countryData.population}</p>
     <h3>Country Area:</h3>
