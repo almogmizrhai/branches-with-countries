@@ -8,19 +8,7 @@ var gSearchedCountries = loadFromStorage(storageKey) || []
 
 
 function onInit() {
-    // gSearchedCountries = loadFromStorage(storageKey)
-}
-
-function onGetCountryInfo() {
-    console.log('Hi')
-}
-
-function renderInfo(countryName, data) {
-    const elResultOutput = document.querySelector('.result-output')
-    elResultOutput.innerText =countryName + ': ' + JSON.stringify(data, null, 2)
-    gSearchedCountries.push({countryName, data})
-    saveToStorage(storageKey, gSearchedCountries)
-    console.log('last searched countries:', gSearchedCountries)
+    console.log('Country controller initialized')
 }
 
 function searchCountry(){
@@ -34,8 +22,7 @@ function searchCountry(){
         console.log('Country data is already loaded!')
 
         const countryIndex = gSearchedCountries.findIndex(c => c.countryName.toLowerCase() === countryName.toLowerCase())
-        console.log('Loaded from storage:', gSearchedCountries[countryIndex])
-        renderInfo(countryName, gSearchedCountries[countryIndex].data)
+        onGetCountryInfo(countryName, gSearchedCountries[countryIndex].data)
         
         elLoader.classList.add('hide')
         elResult.classList.remove('hide')
@@ -43,7 +30,7 @@ function searchCountry(){
         
         getCountryByName(countryName)
         .then((data) => {
-            renderInfo(countryName, data)
+            onGetCountryInfo(countryName, data)
         })
         .catch((err) => {
             console.error('Error fetching country data:', err)
@@ -53,5 +40,29 @@ function searchCountry(){
             elResult.classList.remove('hide')
         })
     }
-   
+}
+
+function onGetCountryInfo(countryName, data) {
+    const countryData = data[0]
+
+    if (!gSearchedCountries.some(c => c.countryName.toLowerCase() === countryName.toLowerCase())) {
+        gSearchedCountries.push({ countryName, data })
+        saveToStorage(storageKey, gSearchedCountries)
+    }
+
+    renderInfo(countryName, countryData)
+}
+
+function renderInfo(countryName, countryData) {
+    if (!countryData) return
+
+    const elResultInfo = document.querySelector('.result-info')
+
+    var strHTML = `<h2 class="country-name">Country Name: ${countryName}</h2>
+    <h3>Flag:</h3>
+    <img src="${countryData.flags.png}" alt="flag of ${countryName}" class="country-flag">
+    <p class="country-population">Country Population: ${countryData.population}</p>
+    <p class="country-area">Country Area: ${countryData.area}</p>`
+
+    elResultInfo.innerHTML = strHTML
 }

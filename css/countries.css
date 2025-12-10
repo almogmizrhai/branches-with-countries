@@ -31,6 +31,16 @@ body{
     overflow-y: auto;
 }
 
+.result-info{
+    text-align: left;
+    background-color: #ddebe6;
+    color: #3d676f;
+    padding: 15px;
+    border-radius: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
 .hide {
     display: none;
 }
