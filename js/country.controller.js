@@ -9,9 +9,13 @@ var gSearchedCountries = loadFromStorage(storageKey) || []
 
 function onInit() {
     console.log('Country controller initialized')
+    const elForm = document.querySelector('.country-form')
+    elForm.addEventListener('submit', onSearchCountry)
 }
 
-function onSearchCountry(){
+function onSearchCountry(event){
+    event.preventDefault()
+    
     const countryName = document.querySelector('.country-input').value
     const elLoader = document.querySelector('.loader')
     const elResult = document.querySelector('.result')
