@@ -43,3 +43,9 @@ body{
 .hide {
     display: none;
 }
+
+.action-btns{
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;    
+}

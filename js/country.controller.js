@@ -11,7 +11,7 @@ function onInit() {
     console.log('Country controller initialized')
 }
 
-function searchCountry(){
+function onSearchCountry(){
     const countryName = document.querySelector('.country-input').value
     const elLoader = document.querySelector('.loader')
     const elResult = document.querySelector('.result')
@@ -67,4 +67,10 @@ function renderInfo(countryName, countryData) {
     <p class="country-area"> ${countryData.area}</p>`
 
     elResultInfo.innerHTML = strHTML
+}
+
+function onClearCache(){
+    console.log('Clearing cache...')
+    gSearchedCountries = []
+    saveToStorage(storageKey, gSearchedCountries)
 }
